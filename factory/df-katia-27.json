@@ -1,0 +1,9 @@
+{
+	"name": "df-katia-27",
+	"location": "eastus",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "98ede3a2-28c3-4c6c-a007-e1227712929c",
+		"tenantId": "a49e2ad8-3b8d-40e8-8c45-1505c9a243d3"
+	}
+}
