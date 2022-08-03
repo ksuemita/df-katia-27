@@ -1,12 +1,20 @@
 {
 	"name": "ls_datalake_beca",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"annotations": [],
 		"type": "AzureBlobFS",
 		"typeProperties": {
 			"url": "https://datalakekatia27.dfs.core.windows.net/",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDVGNERDNUZCLUVFMTItNDI2RS04QkEyLURCNEIwREYzMTMwNV9jMjMwNjAwYS1mMmJiLTRmNWMtYTBmMy03YTMyY2YxM2FjNDMiDQp9"
+			"accountKey": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "storage-key",
+				"secretVersion": "9f12627e21de456c8047a84711c33a4e"
+			}
 		}
-	}
+	},
+	"type": "Microsoft.DataFactory/factories/linkedservices"
 }
