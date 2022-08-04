@@ -66,14 +66,34 @@
 					"referenceName": "ls_datalake_beca",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"container": {
+						"type": "string"
+					},
+					"folder": {
+						"type": "string"
+					},
+					"filename": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "DelimitedText",
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobFSLocation",
-						"fileName": "carros.csv",
-						"folderPath": "stage/csv",
-						"fileSystem": "raw"
+						"fileName": {
+							"value": "@dataset().filename",
+							"type": "Expression"
+						},
+						"folderPath": {
+							"value": "@dataset().folder",
+							"type": "Expression"
+						},
+						"fileSystem": {
+							"value": "@dataset().container",
+							"type": "Expression"
+						}
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
@@ -180,7 +200,11 @@
 							{
 								"referenceName": "dataset_csv",
 								"type": "DatasetReference",
-								"parameters": {}
+								"parameters": {
+									"container": "raw",
+									"folder": "stage/csv",
+									"filename": "carros.csv"
+								}
 							}
 						],
 						"outputs": [
@@ -202,8 +226,8 @@
 				"annotations": []
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/dataset_csv_output')]",
-				"[concat(variables('factoryId'), '/datasets/dataset_csv')]"
+				"[concat(variables('factoryId'), '/datasets/dataset_csv')]",
+				"[concat(variables('factoryId'), '/datasets/dataset_csv_output')]"
 			]
 		},
 		{
@@ -228,7 +252,7 @@
 						"frequency": "Minute",
 						"interval": 10,
 						"startTime": "2022-08-04T09:42:00",
-						"endTime": "2022-08-05T00:42:00",
+						"endTime": "2022-08-04T12:42:00",
 						"timeZone": "E. South America Standard Time"
 					}
 				}
