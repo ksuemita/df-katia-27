@@ -80,7 +80,14 @@
 											"secureOutput": false,
 											"secureInput": false
 										},
-										"userProperties": []
+										"userProperties": [],
+										"typeProperties": {
+											"notebookPath": "/Users/ksuemita@emeal.nttdata.com/Beca/csv_ingestion"
+										},
+										"linkedServiceName": {
+											"referenceName": "ls_databricks",
+											"type": "LinkedServiceReference"
+										}
 									}
 								]
 							}
